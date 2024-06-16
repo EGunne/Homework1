@@ -1,0 +1,71 @@
+---
+title: "Homework 1"
+author: "Emer Gunne"
+date: today
+date-format: long
+format: pdf
+fontsize: 1.2em
+editor: source
+echo: false
+---
+## Clustering on Iris dataset
+The Iris dataset in R programming contains 150 observations of 4 variables:
+
+*Sepal Length* & *Sepal Width* , *Petal Length* & *Petal Width*
+
+The 5th Column contains the **Species** label for each observation of which there are three:
+**Setosa** , **Versicolor** and **Virginica**
+
+__View pairs of clusters:__
+
+I would like to view a matrix of the 4 variables showing how we can see clusters based on the dimensions of the variables which we can then relate to species
+
+```{r}
+data("iris") #load R package dataset Iris 
+Cluster <- iris[,-5] #take out species column,use sepal length & width
+#and petal length & width to form pairwise clusters of the data
+pairs(Cluster, gap = 0, pch = 19, col = adjustcolor ( "blue", alpha.f = 0.4),
+      main = "Clusters")#use the function pairs to form a matrix of the Cluster dataset 
+#use a circle for each datapoint and use blue with a lighter tone for contrast. 
+```
+
+### Descriptive statistics
+
+I will now investigate the variation in the dataset using summary statistics
+
+**All Species**
+
+```{r}
+summary(iris)
+```
+
+**Setosa**
+
+```{r}
+setosa <- subset (iris, Species =="setosa")# create a subset of the data for species setosa
+versicolor <- subset (iris, Species =="versicolor")# create a subset of the data for species versicolor
+virginica <- subset (iris, Species =="virginica")#create a subset of the data for species virginiCA
+summary(setosa)# look at the variation in the data for setosa species
+```
+
+**Versicolor**
+
+```{r}
+summary(versicolor)
+```
+
+**Virginica**
+
+```{r}
+summary(virginica)
+```
+
+### In summary
+
+Species Setosa has the shortest sepals and petals, widest sepals and narrowest petals.
+
+Species Versicolor has the narrowest sepals.
+
+Species Virginica has the longest sepals and petals.
+
+Petal length and petal width set the species Setosa apart as can be seen in the cluster matrix.
